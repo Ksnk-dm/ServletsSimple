@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -30,14 +31,28 @@ public class Servlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String name = request.getParameter("name1");
+		String[] p1 = request.getParameterValues("option1");
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 		Date date = new Date();
 		SimpleDateFormat sfd = new SimpleDateFormat("HH:mm");
 		PrintWriter pw = response.getWriter();
+
+		
+			
 		
 		
-		pw.println("<b>Hello " + name + " " + "����� ������: " + sfd.format(date));
+		Parser parser = new Parser();
+		if (name==null) {
+			pw.println("<b>Hello Anon "   + " Время сейчас: " + sfd.format(date) + "</b> " + "<p>"
+					+ parser.getWeatheStatus());
+			pw.println("<p><Big> Коронавирус статистика: "+parser.getCovidStatus()+"</Big>");
+		} else {
+		pw.println("<b>Hello " + name + " " + "Время сейчас: " + sfd.format(date) + "</b> " + "<p>"
+				+ parser.getWeatheStatus());
+		pw.println("<p><Big> Коронавирус статистика: "+parser.getCovidStatus()+"</Big>");}
+		pw.println("<p><iframe src=\"https://embed.waze.com/iframe?zoom=15&lat=50.454458&lon=30.605121&ct=livemap\" width=\"600\" height=\"450\" allowfullscreen></iframe>");
+			
 		pw.close();
 	}
 

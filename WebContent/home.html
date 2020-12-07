@@ -2,14 +2,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Информ страница</title>
 </head>
 <body>
 <font  color=green size=25>Домашняя страница</font>
 <form action="Servlet">
 <b>Введите имя: </b>
 <input name= "name1" type="text" size="40">
- <p><input type="submit" action="Servlet" value="Отправить"></form>
+
+<p>Выберите пункт:</p>
+
+ <p><input type="checkbox" name="option1" value="Погода">Погода<Br>
+ <input type="checkbox" name="option1" value="COVID-19">COVID-19<Br>
+  <input type="checkbox" name="option1" value="Пробка">Пробка<Br>
+ <p><input type="submit" name="btn" action="Servlet" value="Отправить"></form>
  
 </body>
 </html>
